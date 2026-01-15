@@ -18,9 +18,12 @@ from services.project_store import (
 from services.release_store import (
     list_releases, create_release, countdown_str
 )
-from ui.desktop.todo_tab import TodoListTab
+
 from ui.desktop.release_editor import ReleaseEditorDialog
 from ui.desktop.release_details_modal import ReleaseDetailsDialog
+
+# ✅ ADD THIS IMPORT (this fixes your NameError)
+from ui.desktop.todo_tab import TodoListTab
 
 
 def _ro(text: str) -> QTableWidgetItem:
@@ -399,6 +402,7 @@ class WorkstreamDesktop(QMainWindow):
         tabs.addTab(ProjectManagementTab(), "Project Management")
         tabs.addTab(ReleaseManagementTab(), "Release Management")
         tabs.addTab(TodoListTab(), "To-Do List")
+
         root = QWidget()
         lay = QVBoxLayout(root)
         lay.addWidget(tabs)
